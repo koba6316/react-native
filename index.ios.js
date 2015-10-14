@@ -5,12 +5,14 @@
 'use strict';
 
 var React = require('react-native');
+var ScrollableTabView = require('react-native-scrollable-tab-view');
 var {
   AppRegistry,
   StyleSheet,
   Text,
   View,
   ListView,
+  ScrollView,
   Image,
   NavigatorIOS,
   TouchableWithoutFeedback,
@@ -23,12 +25,67 @@ var QIITA_URL = "https://qiita.com/api/v2/tags/reactjs/items";
 var ReactQiitaNavigator = React.createClass({
   render: function() {
     return (
-      <NavigatorIOS
-        style={styles.navigator}
-        initialRoute={{
-          component: ReactQiitaList,
-          title: 'ReactQiita',
-      }}/>
+
+      <ScrollableTabView>
+        <ReactQiitaList tabLabel="React" />
+        <FlowPage tabLabel="Flow" />
+        <JestPage tabLabel="Jest" />
+      </ScrollableTabView>
+
+      // <NavigatorIOS
+      //   style={styles.navigator}
+      //   initialRoute={{
+      //     component: ReactQiitaList,
+      //     title: 'ReactQiita',
+      // }}/>
+    );
+  }
+})
+
+var ReactPage = React.createClass({
+  render() {
+    return (
+      <ScrollView>
+        <Image source={{uri: "http://sc5.io/blog/wp-content/uploads/2014/06/react.png"}}
+               style={{flex: 1, height: 320}} resizeMode="cover" />
+        <Text>
+          aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        </Text>
+        <Image source={{uri: "http://sc5.io/blog/wp-content/uploads/2014/06/react.png"}}
+               style={{flex: 1, height: 320}} resizeMode="cover" />
+      </ScrollView>
+    );
+  }
+})
+
+var FlowPage = React.createClass({
+  render() {
+    return (
+      <ScrollView>
+        <Image source={{uri: "http://www.adweek.com/socialtimes/files/2014/11/FlowLogo650.jpg"}}
+               style={{flex: 1, height: 320}} resizeMode="contain" />
+
+        <Image source={{uri: "http://www.adweek.com/socialtimes/files/2014/11/FlowLogo650.jpg"}}
+               style={{flex: 1, height: 320}} resizeMode="contain" />
+
+        <Image source={{uri: "http://www.adweek.com/socialtimes/files/2014/11/FlowLogo650.jpg"}}
+               style={{flex: 1, height: 320}} resizeMode="contain" />
+      </ScrollView>
+    );
+  }
+})
+
+var JestPage = React.createClass({
+  render() {
+    return (
+      <ScrollView>
+        <Image source={{uri: "http://facebook.github.io/jest/img/opengraph.png"}}
+               style={{flex: 1, height: 320}} resizeMode="cover" />
+        <Image source={{uri: "http://facebook.github.io/jest/img/opengraph.png"}}
+               style={{flex: 1, height: 320}} resizeMode="cover" />
+        <Image source={{uri: "http://facebook.github.io/jest/img/opengraph.png"}}
+               style={{flex: 1, height: 320}} resizeMode="cover" />
+      </ScrollView>
     );
   }
 })
